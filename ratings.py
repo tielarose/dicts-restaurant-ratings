@@ -30,11 +30,36 @@ def print_restaurant_rating(restaurant_ratings_dict):
     for restaurant, rating in sorted(restaurant_ratings_dict.items()):
         print(f'{restaurant} is rated at {rating}.')
 
+def get_new_rating():
+    print('Welcome! Please enter the name of the restaurant you\'d like to review:')
+    restaurant_name = input('> ')
+    print('Please enter the rating:')
+    restaurant_rating = float(input('> '))
+
+    return (restaurant_name, restaurant_rating)
+
+def add_rating(restaurant_ratings_dict, restaurant_name, restaurant_rating):
+    """Takes in a dictionary, restaurant, rating and adds the restaurant, rating to the dictionary"""
+    restaurant_ratings_dict[restaurant_name] = restaurant_rating
+
+
 
 def main(filename):
+    # Create a dictionary of ratings from the file
+    restaurant_ratings_dict =  read_restaurant_ratings(filename)
 
-    restaurant_rating_dict =  read_restaurant_ratings(filename)
-    print_restaurant_rating(restaurant_rating_dict)
+    # Print the ratings alphabetically by restaurant
+    print_restaurant_rating(restaurant_ratings_dict)
+
+    # As the user for a restaurant name and rating
+    restaurant_name, restaurant_rating = get_new_rating()
+
+    # Add user input to existing dictionary of ratings
+    add_rating(restaurant_ratings_dict, restaurant_name, restaurant_rating)
+
+    # Reprint the ratings alphabetically by restaurant
+    print_restaurant_rating(restaurant_ratings_dict)
+
 
 
 main(sys.argv[1])
