@@ -9,16 +9,12 @@ def read_restaurant_ratings(filename):
 
     restaurant_ratings_dict = {}
 
-    # Open the file
     file = open(filename)
 
-    # Iterate over each line
     for line in file:
-        line = line.rstrip() # Remove trailing whitespace
-        # Assign variables for name and rating
-        restaurant_name, rating = line.split(':')[0], line.split(':')[1] 
-        restaurant_ratings_dict[restaurant_name] = rating # Add restaurant and rating to dictionary
-    
+        line = line.rstrip()
+        restaurant_name, rating = line.split(':')
+        restaurant_ratings_dict[restaurant_name] = rating 
     return restaurant_ratings_dict
 
 
@@ -26,7 +22,6 @@ def print_restaurant_rating(restaurant_ratings_dict):
     """takes in dic and printing the rating in alphabetical order"""
 
     # Print each restaurant and its rating in alphabetical order
-
     for restaurant, rating in sorted(restaurant_ratings_dict.items()):
         print(f'{restaurant} is rated at {rating}.')
 
@@ -51,7 +46,7 @@ def main(filename):
     # Print the ratings alphabetically by restaurant
     print_restaurant_rating(restaurant_ratings_dict)
 
-    # As the user for a restaurant name and rating
+    # Ask the user for a restaurant name and rating
     restaurant_name, restaurant_rating = get_new_rating()
 
     # Add user input to existing dictionary of ratings
