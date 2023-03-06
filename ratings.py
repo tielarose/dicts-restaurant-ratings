@@ -37,10 +37,9 @@ def print_restaurant_rating(restaurant_ratings_dict):
             rating = restaurant_ratings_dict[restaurant]
             print(f'{restaurant} is rated at {rating}.')
 
-    # Print each restaurant and its rating in alphabetical order
-
 
 def get_new_rating():
+    """Gets user input for restaurant name, rating and adds it to existing dictionary of ratings"""
     print('Please enter the name of the restaurant you\'d like to review:')
     restaurant_name = input('> ')
     print('Please enter the rating:')
